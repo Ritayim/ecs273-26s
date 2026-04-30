@@ -18,3 +18,17 @@ export interface Point {
 export interface Bar{
     readonly value: number;
 }
+
+export interface StockRow {
+    date: Date;
+    close: number;
+    open: number;
+    high: number;
+    low: number;
+}
+
+export interface StockNewsRow {
+    title: string;
+    date: Date;
+    content: string;
+}
