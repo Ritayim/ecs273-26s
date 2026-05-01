@@ -17,19 +17,19 @@ const SERIES = [
     { key: "low" as const, label: "Low", color: "#D55E00" },
 ];
 
-export function LineChart() {
+export function LineChart({ stock = "AAPL" }: { stock?: string }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
     const [data, setData] = useState<StockRow[] | null>(null);
 
     useEffect(() => {
-        loadStock("AAPL").then((rows: StockRow[] | null) => {
+        loadStock(stock).then((rows: StockRow[] | null) => {
             setData(rows);
         }).catch((error) => {
             console.error("Error loading stock data", error);
         });
-    }, []);
+    }, [stock]);
 
     useEffect(() => {
         if (!containerRef.current || !scrollRef.current || !svgRef.current || !data?.length) {

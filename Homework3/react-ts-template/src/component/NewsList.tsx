@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { StockNewsRow } from "../types";
 import { loadStockNews } from "../data/StockNews";
 
-export function NewsList() {
+export function NewsList({ stock = "AAPL" }: { stock?: string }) {
     const [rows, setRows] = useState<string[][]>([]);
     const [expandedRows, setExpandedRows] = useState<Set<number>>(new Set());
 
@@ -19,13 +19,14 @@ export function NewsList() {
     };
 
     useEffect(() => {
-        loadStockNews("AAPL").then((news: StockNewsRow[]) => {
+        console.log("Loading news for stock:", stock);
+        loadStockNews(stock).then((news: StockNewsRow[]) => {
             const newsRows = news.map(n => [n.title, n.date.toLocaleDateString(), n.content]);
             setRows(newsRows);
         }).catch((error) => {
             console.error("Error loading stock news", error);
         });
-    }, []);
+    }, [stock]);
 
 
     return (
