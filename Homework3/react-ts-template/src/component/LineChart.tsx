@@ -26,7 +26,6 @@ export function LineChart() {
     useEffect(() => {
         loadStock("AAPL").then((rows: StockRow[] | null) => {
             setData(rows);
-            console.log("rows", rows);
         }).catch((error) => {
             console.error("Error loading stock data", error);
         });

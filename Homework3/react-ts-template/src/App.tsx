@@ -1,6 +1,7 @@
 
-import { BarChart } from "./component/example";
+import { LineChart } from "./component/LineChart";
 import RenderOptions from "./component/options";
+import { NewsList } from "./component/NewsList";
 // A "extends" B means A inherits the properties and methods from B.
 
 
@@ -17,25 +18,24 @@ export default function App() {
       </header>
       <div className="flex flex-row h-full w-full">
         <div className="flex flex-col w-2/3">
-
           <div className="h-1/4 p-2">
-            <h3 className="text-left text-xl">View 1 to be replaced by the view title</h3>
+            <h3 className="text-left text-xl">Stock Price</h3>
             <div className="border-2 border-gray-300 rounded-xl">
-              <BarChart />
+              <LineChart />
             </div>
           </div>
           <div className="h-3/4 p-2">
             <h3 className="text-left text-xl h-[2rem]">View 2 to be replaced by the view title</h3>
-            <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)]">
-              <p className="text-center text-gray-500 mt-20">Empty View 2</p>
+            <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)] flex min-h-0 flex-col">
+              <LineChart />
             </div>
           </div>
           
         </div>
         <div className="w-1/3 h-full p-2">
-            <h3 className="text-left text-xl h-[2rem]">View 3 to be replaced by the view title</h3>
+            <h3 className="text-left text-xl h-[2rem]">Latest News</h3>
             <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)]">
-              <p className="text-center text-gray-500 mt-20">Empty View 3</p>
+                <NewsList /> 
             </div>
           </div>
         
