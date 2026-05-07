@@ -1,5 +1,6 @@
 
 import { LineChart } from "./component/LineChart";
+import { TSNEScatter } from "./component/TSNEScatter";
 import RenderOptions from "./component/options";
 import { NewsList } from "./component/NewsList";
 import { useState } from "react";
@@ -39,7 +40,7 @@ export default function App() {
           <div className="h-3/4 p-2">
             <h3 className="text-left text-xl h-[2rem]">View 2 to be replaced by the view title</h3>
             <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)] flex min-h-0 flex-col">
-              <LineChart stock={selectedStock} />
+              <TSNEScatter selectedStock={selectedStock} onSelect={setSelectedStock} />
             </div>
           </div>
           

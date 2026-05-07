@@ -32,3 +32,10 @@ export interface StockNewsRow {
     date: Date;
     content: string;
 }
+
+export interface TSNEDataPoint {
+    x: number;
+    y: number;
+    sector: string;
+    ticker: string;
+}

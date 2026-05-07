@@ -84,8 +84,7 @@ function drawLineChart(
     containerWidth: number,
     containerHeight: number
 ) {
-    const hint = containerRefHeightReserve(containerHeight);
-    const plotHeight = Math.max(160, containerHeight - hint);
+    const plotHeight = Math.max(160, containerHeight -  Math.min(40, containerHeight * 0.25) - margin.top - margin.bottom);
 
     const innerW = Math.max(
         containerWidth - margin.left - margin.right,
@@ -246,10 +245,4 @@ function drawLineChart(
         });
 
     zoomSurface.call(zoom);
-}
-
-/** Approximate space used by the hint paragraph above the scroll area (matches Tailwind text-xs + padding). */
-function containerRefHeightReserve(totalHeight: number) {
-    const hint = 40;
-    return Math.min(hint, totalHeight * 0.25);
 }
