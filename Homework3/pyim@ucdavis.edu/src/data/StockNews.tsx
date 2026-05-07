@@ -2,15 +2,12 @@ import { StockNewsRow } from "../types";
 
 function parseNewsFile(fileContent: string): StockNewsRow | null {
     try {
-        // Extract title
         const titleMatch = fileContent.match(/Title:\s*(.+)/);
         const title = titleMatch ? titleMatch[1].trim() : "";
 
-        // Extract date
         const dateMatch = fileContent.match(/Date:\s*(.+)/);
         const dateStr = dateMatch ? dateMatch[1].trim() : "";
 
-        // Extract article content (everything after --Article Content--)
         const contentMatch = fileContent.match(/--Article Content--\s*([\s\S]*)/);
         const content = contentMatch ? contentMatch[1].trim() : "";
 
@@ -49,7 +46,6 @@ export async function loadStockNews(stock: string): Promise<StockNewsRow[]> {
             }
         }
 
-        // Sort by date descending
         newsRows.sort((a, b) => b.date.getTime() - a.date.getTime());
 
         return newsRows;
