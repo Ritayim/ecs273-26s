@@ -195,6 +195,8 @@ function drawScatterPlot(
                 .attr("x", d => zx(d.x))
                 .attr("y", d => zy(d.y) - 13);
 
+            svg.select<SVGGElement>(".x-axis").call(d3.axisBottom(zx));
+            svg.select<SVGGElement>(".y-axis").call(d3.axisLeft(zy));
         });
 
     zoomSurface.call(zoom);

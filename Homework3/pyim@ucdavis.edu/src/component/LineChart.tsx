@@ -84,7 +84,7 @@ function drawLineChart(
     containerWidth: number,
     containerHeight: number
 ) {
-    const plotHeight = Math.max(160, containerHeight -  Math.min(40, containerHeight * 0.25) - margin.top - margin.bottom);
+    const plotHeight = Math.max(300, containerHeight -  Math.min(40, containerHeight * 0.25) - margin.top - margin.bottom);
 
     const innerW = Math.max(
         containerWidth - margin.left - margin.right,

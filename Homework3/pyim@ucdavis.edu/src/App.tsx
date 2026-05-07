@@ -31,13 +31,13 @@ export default function App() {
       </header>
       <div className="flex flex-row h-full w-full">
         <div className="flex flex-col w-2/3">
-          <div className="h-1/4 p-2">
+          <div className="h-2/5 p-2">
             <h3 className="text-left text-xl">Stock Price</h3>
             <div className="border-2 border-gray-300 rounded-xl">
               <LineChart stock={selectedStock} />
             </div>
           </div>
-          <div className="h-3/4 p-2">
+          <div className="h-3/5 p-2">
             <h3 className="text-left text-xl h-[2rem]">TSNE Scatter Plot</h3>
             <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)] flex min-h-0 flex-col">
               <TSNEScatter selectedStock={selectedStock} onSelect={setSelectedStock} />
