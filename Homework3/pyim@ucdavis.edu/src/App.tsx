@@ -40,7 +40,7 @@ export default function App() {
           <div className="h-3/5 p-2">
             <h3 className="text-left text-xl h-[2rem]">TSNE Scatter Plot</h3>
             <div className="border-2 border-gray-300 rounded-xl h-[calc(100%_-_2rem)] flex min-h-0 flex-col">
-              <TSNEScatter selectedStock={selectedStock} onSelect={setSelectedStock} />
+              <TSNEScatter selectedStock={selectedStock}/>
             </div>
           </div>
           

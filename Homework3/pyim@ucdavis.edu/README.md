@@ -71,7 +71,6 @@ pyim@ucdavis.edu/
 │   │   ├── TSNEScatter.tsx # Interactive t-SNE scatter plot
 │   │   ├── NewsList.tsx    # Expandable news table
 │   │   ├── options.tsx     # Dropdown option renderer
-│   │   └── drawChart.ts    # Shared D3 drawing utilities
 │   ├── data/               # Data loaders (CSV parsers)
 │   ├── types.ts            # Shared TypeScript interfaces
 │   ├── App.tsx             # Root layout and shared state
