@@ -25,7 +25,6 @@ interface SectorPoint {
 
 interface TSNEScatterProps {
     selectedStock: string;
-    onSelect: (ticker: string) => void;
 }
 
 function normalizeSector(s: string): SectorKey {
@@ -36,7 +35,7 @@ function normalizeSector(s: string): SectorKey {
     return (overrides[s] ?? s.toLowerCase()) as SectorKey;
 }
 
-export function TSNEScatter({ selectedStock, onSelect }: TSNEScatterProps) {
+export function TSNEScatter({ selectedStock }: TSNEScatterProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
     const [data, setData] = useState<SectorPoint[]>([]);

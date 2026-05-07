@@ -1,54 +1,90 @@
-# React + TypeScript + Vite
+# ECS 273 – Homework 3: Interactive Stock Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-view interactive data visualization dashboard built with React, TypeScript, D3.js, and Vite. The app lets users explore historical stock prices, dimensionality-reduced embeddings (t-SNE), and related news for 20 S&P 500 companies.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview
 
-## Expanding the ESLint configuration
+The dashboard presents three coordinated views:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| View | Description |
+|------|-------------|
+| **Stock Price Line Chart** | Multi-series line chart (Open, Close, High, Low) with horizontal zoom and pan |
+| **t-SNE Scatter Plot** | 2-D projection of stock embeddings colored by market sector; supports zoom and click-to-select |
+| **Latest News** | Scrollable table of recent news headlines and summaries for the selected ticker |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+All three views are linked — selecting a stock from the dropdown or clicking a point on the scatter plot updates the other views in real time.
+
+---
+
+## Prerequisites
+
+| Tool | Minimum Version |
+|------|----------------|
+| Node.js | 18.x |
+| npm | 9.x |
+
+No other global dependencies are required.
+
+---
+
+## Setup
+
+```bash
+# 1. Clone the repository (or navigate to the homework directory)
+cd Homework3/pyim@ucdavis.edu
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Other scripts
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+| Command | Description |
+|---------|-------------|
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+## Project Structure
+
 ```
+pyim@ucdavis.edu/
+├── data/
+│   ├── stockdata/          # Historical OHLCV CSVs for 20 tickers (AAPL, MSFT, …)
+│   └── t-SNE/
+│       ├── tsne_raw.csv    # t-SNE coordinates from raw price features
+│       └── tsne_latent.csv # t-SNE coordinates from latent/encoded features
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── component/
+│   │   ├── LineChart.tsx   # Zoomable multi-series line chart
+│   │   ├── TSNEScatter.tsx # Interactive t-SNE scatter plot
+│   │   ├── NewsList.tsx    # Expandable news table
+│   │   ├── options.tsx     # Dropdown option renderer
+│   │   └── drawChart.ts    # Shared D3 drawing utilities
+│   ├── data/               # Data loaders (CSV parsers)
+│   ├── types.ts            # Shared TypeScript interfaces
+│   ├── App.tsx             # Root layout and shared state
+│   ├── main.tsx            # React entry point
+│   └── index.css           # Global styles (Tailwind)
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+---
+
+## Note
+
+AI usage is used for debugging, and recommendations. All final code and documentation are manually reviewed and edited by the student.
