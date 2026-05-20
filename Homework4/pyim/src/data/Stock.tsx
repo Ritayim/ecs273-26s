@@ -1,4 +1,3 @@
-import * as d3 from "d3";
 import { StockRow } from "../types";
 import { API_BASE_URL } from "../config";
 

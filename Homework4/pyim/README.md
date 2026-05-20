@@ -115,16 +115,6 @@ The script imports four collections into the `stock_py` database:
 | `stock_news_list` | `data/stocknews/<TICKER>/*.txt` |
 | `tsne_data` | `data/tsne.csv` |
 
-> **Note:** The `main()` function in `import_data.py` has some import calls commented out. Uncomment the relevant lines to import all collections:
->
-> ```python
-> async def main():
->     await import_tickers_to_mongodb()
->     await import_stock_to_mongodb()
->     await import_news_to_mongodb()
->     await import_tsne_to_mongodb()
-> ```
-
 ---
 
 ## 5. Run the FastAPI Backend

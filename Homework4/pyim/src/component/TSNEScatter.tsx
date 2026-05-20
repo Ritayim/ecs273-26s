@@ -98,7 +98,7 @@ function drawScatterPlot(
     height: number,
     selectedTicker: string,
 ) {
-    const margin = { top: 20, right: 130, bottom: 30, left: 40 };
+    const margin = { top: 20, right: 130, bottom: 50, left: 60 };
     const plotWidth = width - margin.left - margin.right;
     const plotHeight = height - margin.top - margin.bottom;
 
@@ -114,10 +114,29 @@ function drawScatterPlot(
         .attr("transform", `translate(0,${margin.top + plotHeight})`)
         .call(d3.axisBottom(x));
 
+    svg.append("text")
+        .attr("class", "x-label")
+        .attr("x", margin.left + plotWidth / 2)
+        .attr("y", height - 8)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "13px")
+        .attr("fill", "#555")
+        .text("t-SNE Dimension 1");
+
     svg.append("g")
         .attr("class", "y-axis")
         .attr("transform", `translate(${margin.left},0)`)
         .call(d3.axisLeft(y));
+
+    svg.append("text")
+        .attr("class", "y-label")
+        .attr("x", -(margin.top + plotHeight / 2))
+        .attr("y", 16)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "13px")
+        .attr("fill", "#555")
+        .attr("transform", "rotate(-90)")
+        .text("t-SNE Dimension 2");
 
     const colorScale = d3.scaleOrdinal<SectorKey, string>()
         .domain(SECTORS.map(d => d.key))
