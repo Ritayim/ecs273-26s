@@ -63,5 +63,6 @@ class tsneDataModel(BaseModel):
     """
     _id: Optional[PyObjectId] = None
     stock: str
+    sector: str
     x: float
     y: float

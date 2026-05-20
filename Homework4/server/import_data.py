@@ -115,6 +115,7 @@ async def import_tsne_to_mongodb():
         for _, row in df.iterrows():
             tsne_data = tsneDataModel(
                 stock=row["ticker"],
+                sector=row["sector"],
                 x=row["tsne_x"],
                 y=row["tsne_y"]
             )
